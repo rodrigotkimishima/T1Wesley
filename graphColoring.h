@@ -9,5 +9,6 @@
 
 void coloringGraph(graph *grafo);
 bool coloring(std::list<vertice*> pilha, int K);
+void printResultado(std::list<bool> resultado, int idGraph, int K);
 
 #endif

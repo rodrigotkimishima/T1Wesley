@@ -34,6 +34,8 @@ class vertice
         void setArestaQtd(int Qtd);
         int getArestaQtd();
         void setDisable();
+        bool putColor(int K1);
+        int getCor();
 };
 
 #endif

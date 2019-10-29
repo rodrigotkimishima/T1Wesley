@@ -12,9 +12,14 @@ vertice::vertice(int id1, int regFisicos, int K1)
     }
     else
     {
+        int i;
         regFisico = false;
         ativo = true;
         cores = (bool *) malloc(sizeof(bool)*K1);
+        for(i = 0; i < regFisicos; i++)
+        {
+            cores[i] = false;
+        }
     }
 }
 
@@ -103,4 +108,31 @@ void vertice::setDisable()
         aux = *node;
         aux->setArestaQtd(aux->getArestaQtd()-1);
     }
+}
+
+bool vertice::putColor(int K1)
+{
+    int i;
+    std::list<vertice*>::iterator node;
+    vertice* aux;
+    for(i= 0; i < K1; i++)
+    {
+        if(!cores[i])
+        {
+            cor = i;
+            cores[i] = true;
+            for(node = interferencias.begin(); node != interferencias.end(); node++)
+            {
+                aux = *node;
+                aux->setCor(true, i);
+            }
+            return true;
+        }
+    }
+    return false;
+}
+
+int vertice::getCor()
+{
+    return cor;
 }
